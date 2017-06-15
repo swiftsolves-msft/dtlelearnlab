@@ -2,14 +2,14 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "userName": {
-      "value": "eagle"
-    },
     "labVirtualNetworkName": {
-      "value": "251Lab-VNET-001"
+      "value": "251Lab-VNET-002"
     },
     "expirationDate": {
-      "value": "2017-06-14T23:00:00.000Z"
+      "value": "2017-06-15T03:00:00.000Z"
+    },
+    "newVMName": {
+      "value": "NYC-ADS-002"
     }
   }
 }

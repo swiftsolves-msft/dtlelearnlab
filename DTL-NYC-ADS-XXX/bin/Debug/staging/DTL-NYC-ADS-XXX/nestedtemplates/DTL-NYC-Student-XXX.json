@@ -12,7 +12,7 @@
     },
     "size": {
       "type": "string",
-      "defaultValue": "Standard_DS2_v2"
+      "defaultValue": "Standard_DS1_v2"
     },
     "labVirtualNetworkName": {
       "type": "string",
@@ -29,22 +29,13 @@
     "password": {
       "type": "securestring",
       "defaultValue": "[[[labvmpass]]"
-    },
-    "_artifactsLocation": {
-      "type": "string"
-    },
-    "_artifactsLocationSasToken": {
-      "type": "securestring"
     }
   },
   "variables": {
     "labSubnetName": "Lab",
     "labVirtualNetworkId": "[resourceId('Microsoft.DevTestLab/labs/virtualnetworks', parameters('labName'), parameters('labVirtualNetworkName'))]",
     "vmId": "[resourceId ('Microsoft.DevTestLab/labs/virtualmachines', parameters('labName'), parameters('newVMName'))]",
-    "vmName": "[concat(parameters('labName'), '/', parameters('newVMName'))]",
-    "DTL-NYC-Student-XXXTemplateFolder": "nestedtemplates",
-    "DTL-NYC-Student-XXXTemplateFileName": "DTL-NYC-Student-XXX.json",
-    "DTL-NYC-Student-XXXTemplateParametersFileName": "DTL-NYC-Student-XXX.parameters.json"
+    "vmName": "[concat(parameters('labName'), '/', parameters('newVMName'))]"
   },
   "resources": [
     {
@@ -54,34 +45,17 @@
       "location": "[resourceGroup().location]",
       "properties": {
         "labVirtualNetworkId": "[variables('labVirtualNetworkId')]",
-        "notes": "NYC-ADS-XXX",
-        "customImageId": "/subscriptions/6820d920-c94a-41f8-9e08-811fa97a1624/resourcegroups/elearningrg540795/providers/microsoft.devtestlab/labs/elearning/customimages/nyc-ads-xxx",
+        "notes": "NYC-Student-XXX",
+        "customImageId": "/subscriptions/6820d920-c94a-41f8-9e08-811fa97a1624/resourcegroups/elearningrg540795/providers/microsoft.devtestlab/labs/elearning/customimages/nyc-student-xxx",
         "size": "[parameters('size')]",
         "userName": "[parameters('userName')]",
         "password": "[parameters('password')]",
         "isAuthenticationWithSshKey": false,
         "labSubnetName": "[variables('labSubnetName')]",
-        "disallowPublicIpAddress": true,
+        "disallowPublicIpAddress": false,
         "storageType": "Premium",
         "allowClaim": false,
         "expirationDate": "[parameters('expirationDate')]"
-      }
-    },
-    {
-      "name": "DTL-NYC-Student-XXX",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('DTL-NYC-Student-XXXTemplateFolder'), '/', variables('DTL-NYC-Student-XXXTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('DTL-NYC-Student-XXXTemplateFolder'), '/', variables('DTL-NYC-Student-XXXTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
-        }
       }
     }
   ],
