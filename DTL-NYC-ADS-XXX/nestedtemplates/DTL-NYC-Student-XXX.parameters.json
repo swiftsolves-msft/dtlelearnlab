@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "labVirtualNetworkName": {
-      "value": "251Lab-VNET-002"
+      "value": "251Lab-VNET-003"
     },
     "expirationDate": {
-      "value": "2017-06-15T03:00:00.000Z"
+      "value": "2017-06-15T15:00:00.000Z"
     },
     "newVMName": {
-      "value": "NYC-Student-002"
+      "value": "NYC-Student-003"
     }
   }
 }
