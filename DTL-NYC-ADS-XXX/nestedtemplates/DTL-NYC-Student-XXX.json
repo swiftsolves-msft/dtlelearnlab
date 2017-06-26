@@ -24,7 +24,7 @@
     },
     "expirationDate": {
       "type": "string",
-      "defaultValue": "2017-06-15T15:00:00.000Z"
+      "defaultValue": ""
     },
     "password": {
       "type": "securestring",
