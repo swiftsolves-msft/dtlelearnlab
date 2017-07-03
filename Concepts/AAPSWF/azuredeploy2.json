@@ -1,0 +1,68 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "newVMNamestu": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "labName": {
+      "type": "string",
+      "defaultValue": "elearning"
+    },
+    "size": {
+      "type": "string",
+      "defaultValue": "Standard_DS1_v2"
+    },
+    "labVirtualNetworkNamestu": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "userName": {
+      "type": "securestring",
+      "defaultValue": "[[[labvmuser]]"
+    },
+    "expirationDatestu": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "password": {
+      "type": "securestring",
+      "defaultValue": "[[[labvmpass]]"
+    }
+  },
+  "variables": {
+    "labSubnetName": "Lab",
+    "labVirtualNetworkId": "[resourceId('Microsoft.DevTestLab/labs/virtualnetworks', parameters('labName'), parameters('labVirtualNetworkNamestu'))]",
+    "vmId": "[resourceId ('Microsoft.DevTestLab/labs/virtualmachines', parameters('labName'), parameters('newVMNamestu'))]",
+    "vmName": "[concat(parameters('labName'), '/','NYC-Student-', parameters('newVMNamestu'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-04-26-preview",
+      "type": "Microsoft.DevTestLab/labs/virtualmachines",
+      "name": "[variables('vmName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "labVirtualNetworkId": "[variables('labVirtualNetworkId')]",
+        "notes": "NYC-Student-XXX",
+        "customImageId": "/subscriptions/6820d920-c94a-41f8-9e08-811fa97a1624/resourcegroups/elearningrg540795/providers/microsoft.devtestlab/labs/elearning/customimages/nyc-student-xxx",
+        "size": "[parameters('size')]",
+        "userName": "[parameters('userName')]",
+        "password": "[parameters('password')]",
+        "isAuthenticationWithSshKey": false,
+        "labSubnetName": "[variables('labSubnetName')]",
+        "disallowPublicIpAddress": false,
+        "storageType": "Premium",
+        "allowClaim": false,
+        "expirationDate": "[parameters('expirationDatestu')]"
+      }
+    }
+  ],
+  "outputs": {
+    "labVMId": {
+      "type": "string",
+      "value": "[variables('vmId')]"
+    }
+  }
+}
