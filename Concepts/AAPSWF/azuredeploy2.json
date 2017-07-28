@@ -27,7 +27,7 @@
       "defaultValue": ""
     },
     "password": {
-      "type": "securestring",
+      "type": "string",
       "defaultValue": ""
     }
   },
