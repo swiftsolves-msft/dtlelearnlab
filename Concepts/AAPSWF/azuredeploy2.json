@@ -28,7 +28,7 @@
     },
     "password": {
       "type": "securestring",
-      "defaultValue": "[[[labvmpass]]"
+      "defaultValue": ""
     }
   },
   "variables": {
