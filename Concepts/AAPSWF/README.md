@@ -15,9 +15,11 @@ Advantages:
 
 Still to Work On:
 
-Radzen WebApp Submit button does not POST HTTP to Web hook automation job
+Radzen FrontEnd App - Update application on Submit button execute JS Code to capture email addess field and send to Azure Automation as a parameter in JSON Body.
 
-Automation Orchestration Engine captures outputs, however need to be stored in Storage Table and use the student PIP to send to the student
+Update Orchestration coursecreate runbook to accept parameters email address, use captured email address in sending student jumpbox email.
+
+Store unique course creations in a NO SQL table for historical detail
 
 
 Avaliable:
@@ -26,9 +28,10 @@ Orchestration Engine PS WorkFlow Runbook
 
 ARM Templates for DTL Lab creation, Student Jumpbox and AD DC
 
+Radzen Front End Application
+
 Need to make Avaliable:
 
 Package everthing as a deployable solution
 
-Radzen built Signup WebApp
-
+Create Instructions for Deployment End to End
